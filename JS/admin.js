@@ -1,5 +1,5 @@
 // Import ApexCharts
-import ApexCharts from "./apexcharts";
+// import ApexCharts from "../apexcharts";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -233,9 +233,9 @@ function showPasswordPrompt() {
 // Function to check the password
 async function checkPassword() {
   const enteredPassword = document.getElementById("adminPassword").value;
-  const correctPassword = 2005
+  const correctPassword = 2005;
 
-  if (enteredPassword === correctPassword) {
+  if (enteredPassword == correctPassword) {
     document.getElementById("passwordPrompt").style.display = "none"; // Hide the password prompt
     // Load the admin content
     loadDashboardCharts();
