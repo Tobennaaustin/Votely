@@ -222,7 +222,7 @@ window.onload = () => {
   loadPositions();
 };
 
-// Add this code to your existing admin.js file
+
 
 // Function to show the password prompt
 function showPasswordPrompt() {
