@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Results</title>
+    <!-- styles -->
+     <link rel="stylesheet" href="CSS/live.css">
+     <!-- firebase sdks -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="liveResults">
+        <h1>Live Election Results</h1>
+        <div id="positionsContainer"></div>
+    </div>
+
+    <div class="btn">
+        <a href="index.html">Exit <i class='bx bx-exit bx-fade-up bx-rotate-90' ></i></a>
+    </div>
+      
+
+    <script src="JS/live-result.js" type="module"></script>
+</body>
+</html>

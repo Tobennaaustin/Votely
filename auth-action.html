@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Action</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <style>
+        .container {
+            margin: auto;
+            background-color: white;
+            max-width: 500px;
+            padding: 20px;
+            top: 20px;
+            position: relative;
+        }
+
+        .email-message {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="content" class="container">
+
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+            authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+            projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+            storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+            messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+            appId: import.meta.env.VITE_FIREBASE_APP_ID,
+            measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+        };
+
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+        // Extract URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode'); // Action to complete (resetPassword, verifyEmail)
+        const actionCode = urlParams.get('oobCode'); // One-time code to verify or reset
+        const continueUrl = urlParams.get('continueUrl'); // Optional continuation URL
+        const lang = urlParams.get('lang') || 'en'; // Optional language code
+
+
+        const contentDiv = document.getElementById('content');
+
+        switch (mode) {
+            case 'resetPassword':
+                // Display reset password form
+                contentDiv.innerHTML = `
+
+                <div class="form-text">
+                <h2>Reset Your Code</h2>
+                <p>Don't forget it this time again!</p>
+            </div>
+            <div class="form-container">
+                <form id="resetPasswordForm" class="form">
+                    <div class="flex-column">
+                        <label>Create a  6 Digit Code</label>
+                    </div>
+                    <div class="inputForm">
+                        <svg height="20" viewBox="-64 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                            d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0">
+                            </path>
+                            <path
+                            d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0">
+                            </path>
+                        </svg>
+                        <input type="text" class="input" placeholder="Enter new  6 digit code" maxlength="6" pattern="\d*" id="password" required/>
+                    </div>
+                    <button class="button-submit" type="button" id="signupBtn">Submit</button>
+                </form>
+            </div>
+
+           `;
+
+                document.getElementById('resetPasswordForm').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const newPassword = document.getElementById('newPassword').value;
+
+                    // Reset the user's password
+                    firebase.auth().confirmPasswordReset(actionCode, newPassword)
+                        .then(() => {
+
+                            contentDiv.innerHTML =
+                                ` <div class="sucess"> <p> Password changed successfuly</p> </div> `;
+                        })
+                        .catch(error => {
+                            contentDiv.innerHTML =
+                                `<div class="error"> <p> Error: ${error.message} </p> </div>`;
+                        });
+                });
+                break;
+
+            case 'verifyEmail':
+                // Handle email verification
+                firebase.auth().applyActionCode(actionCode)
+                    .then(() => {
+                        contentDiv.innerHTML = `
+
+                        <div class="email-message">
+            <img src="IMG/3d-mobile-phone-with-security-code-padlock.jpg" alt="" width="30%">
+            <h2>Email Verified</h2>
+            <p>Congratulations your email address has been verified.</p>
+            <p>Go back to the login page.</p>
+        </div> 
+                        `;
+                    })
+                    .catch(error => {
+                        contentDiv.innerHTML = `<div class="error"> <p> Error: ${error.message} </p> </div>`;
+                    });
+                break;
+
+            default:
+                contentDiv.innerHTML = ` <div class="error"> <p> Invalid or unknown action mode. </p> </div> `;
+        }
+    </script>
+
+</body>
+
+</html>

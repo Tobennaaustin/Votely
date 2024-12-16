@@ -1,0 +1,148 @@
+/* responsive.css */
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    main,
+section{
+  padding: 20px;
+  margin: 20px;
+}
+   
+  
+    nav .nav-links ul {
+     display: none;
+    }
+    .nav-btn{
+        display: block;
+    }
+  
+    main {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+  
+    main .main-text {
+      align-items: center;
+      text-align: center;
+      gap: 30px;
+    }
+  
+    #about, #features, #admin, #time-voting {
+      flex-direction: column;
+      align-items: center;
+      height: max-content;
+      justify-content: center;
+      text-align: center;
+
+    }
+  
+    #about .about-img, #features .features-img, #time-voting .real-time-vote-img, #admin .admin-img img {
+      order: 0;
+      width: 70%;
+      margin-top: 30px;
+    }
+  
+    .contact-form form .form-control {
+      flex-direction: column;
+    }
+  
+    .contact-form button {
+      max-width: 100%;
+    }
+  
+    h3 {
+      font-size: 2em;
+    }
+  
+    .main-text h1 {
+      font-size: 35px;
+      text-align: center;
+    }
+  
+    .main-text a {
+      max-width: 80%;
+    }
+    .main-text p, .about-text p, .real-time-vote-text p,  .feature-text p, .contact-text p{
+        max-width: 100%;
+    }
+   
+    .feature .feature-text h4{
+        text-align: center;
+    }
+    #features .features-text{
+        gap: 25px;
+      }
+    .features-text .feature{
+        display: flex;
+        align-items: center;
+      }
+      #features .features-img img{
+        width: 100%;
+      }
+      
+  }
+  
+  /* Tablet Styles */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    nav {
+      flex-direction: row;
+    }
+  
+    main {
+      flex-direction: row;
+    }
+  
+    #about, #features, #admin, #time-voting {
+      flex-direction: row;
+      height: auto;
+    }
+  
+    #about .about-img, #features .features-img, #time-voting .real-time-vote-img {
+      width: 80%;
+    }
+  
+    h3 {
+      font-size: 2.5em;
+    }
+  
+    .main-text h1 {
+      font-size: 3em;
+    }
+  
+    .main-text a {
+      max-width: 50%;
+    }
+  }
+  
+  /* Desktop Styles */
+  @media (min-width: 1025px) {
+    nav {
+      flex-direction: row;
+    }
+  
+    main {
+      flex-direction: row;
+    }
+  
+    #about, #features, #admin, #time-voting {
+      flex-direction: row;
+      height: 100vh;
+    }
+  
+    #about .about-img, #features .features-img, #time-voting .real-time-vote-img {
+      width: 100%;
+    }
+  
+    h3 {
+      font-size: 2.7em;
+    }
+  
+    .main-text h1 {
+      font-size: 3.2em;
+    }
+  
+    .main-text a {
+      max-width: 20%;
+    }
+  }

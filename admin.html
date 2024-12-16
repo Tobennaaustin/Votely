@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <!-- styles -->
+  <link rel="stylesheet" href="CSS/admin.css">
+
+  <!-- firebase sdks -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <!-- chartJs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+</head>
+
+<body>
+  <div class="smallscreen">
+    <img src="IMG/undraw_feeling_blue_-4-b7q.svg" alt="">
+    <p>Sorry, your screen is too small for this. Try a tablet or computer! <br /> If your device is big enough, make
+      sure it is in landscape mode!</p>
+  </div>
+
+  <!-- security login -->
+  <div id="passwordPrompt" style="display: none;">
+   <div class="passwordPromptContent">
+    <h2>Enter Admin Password</h2>
+    <input type="password" id="adminPassword" placeholder="Password" />
+    <button id="submitPassword">Submit</button>
+    <p id="errorMessage" style="color: red; display: none;">Incorrect password. Please try again.</p>
+   </div>
+  </div>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>Admin Dashboard</h2>
+      <ul>
+        <li><a href="#" data-tab="dashboard-tab" id="tab1"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
+        <li><a href="#" data-tab="results-tab" id="tab2"><i class='bx bx-chart'></i> Results</a></li>
+        <li><a href="#" data-tab="positions-tab" id="tab3"><i class='bx bx-list-ul'></i> Manage Positions</a></li>
+        <li><a href="#" data-tab="contestants-tab" id="tab4"><i class='bx bx-user'></i> Manage Contestants</a></li>
+      </ul>
+    </aside>
+
+    <div class="content">
+      <header>
+        <h1>Admin Dashboard</h1>
+      </header>
+      <main class="main-content">
+
+        <div class="tabs">
+          <!-- Dashboard Tab -->
+          <section id="dashboard-tab" class="tab active">
+            <h2>Overview</h2>
+            <div class="charts" id="dashboardContainer">
+              <!-- <canvas id="votesChart"></canvas> -->
+            </div>
+          </section>
+
+          <!-- Results Tab -->
+          <section id="results-tab" class="tab">
+            <h2>Voting Results</h2>
+            <table id="resultsTable">
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Contestant</th>
+                  <th>Votes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Data will be populated dynamically -->
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Positions Tab -->
+          <section id="positions-tab" class="tab">
+            <h2>Manage Positions</h2>
+            <form id="addPositionForm">
+              <input type="text" id="positionName" placeholder="Enter Position Name" required>
+              <button type="submit">Add Position</button>
+            </form>
+            <ul id="positionsList"></ul>
+          </section>
+
+          <!-- Contestants Tab -->
+          <section id="contestants-tab" class="tab">
+            <h2>Manage Contestants</h2>
+            <form id="addContestantForm">
+              <select id="positionSelect"></select>
+              <input type="text" id="contestantName" placeholder="Enter Contestant Name" required>
+              <button type="submit">Add Contestant</button>
+            </form>
+            <div id="contestantsContainer"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="JS/admin.js" type="module"></script>
+</body>
+
+</html>

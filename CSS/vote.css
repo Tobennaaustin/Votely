@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Host Grotesk", sans-serif;
+}
+
+body {
+    background-color: rgba(27, 26, 26, 0.094);
+}
+
+.coantianer {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+h1 {
+    color: #2e7d32;
+    margin: 20px;
+}
+
+#positionsContainer {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.position-section {
+    background-color: white;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.position-section h3 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.contestant-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contestant-option label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+}
+
+.contestant-option input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #2e7d32;
+    /* Customize radio button color */
+}
+
+#submitVote {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submitVote:hover {
+    background-color: #1b5e20;
+}
+
+#submitVote:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
