@@ -1,12 +1,13 @@
-
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyCeKQOD-GrJOIos8m-J-mrXHqwg1WyPT-g",
+  authDomain: "cru-nacos-vote.firebaseapp.com",
+  databaseURL: "https://cru-nacos-vote-default-rtdb.firebaseio.com",
+  projectId: "cru-nacos-vote",
+  storageBucket: "cru-nacos-vote.appspot.com",
+  messagingSenderId: "771005751339",
+  appId: "1:771005751339:web:dcb783f1e35f7d65b8ca6e",
+  measurementId: "G-MXTZ1LFZ1T"
 };
 console.log(apiKey);
   const firebaseApp = firebase.initializeApp(firebaseConfig);

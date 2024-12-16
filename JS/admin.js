@@ -1,16 +1,17 @@
 // Import ApexCharts
 import ApexCharts from "apexcharts";
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyCeKQOD-GrJOIos8m-J-mrXHqwg1WyPT-g",
+  authDomain: "cru-nacos-vote.firebaseapp.com",
+  databaseURL: "https://cru-nacos-vote-default-rtdb.firebaseio.com",
+  projectId: "cru-nacos-vote",
+  storageBucket: "cru-nacos-vote.appspot.com",
+  messagingSenderId: "771005751339",
+  appId: "1:771005751339:web:dcb783f1e35f7d65b8ca6e",
+  measurementId: "G-MXTZ1LFZ1T"
 };
-
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const firestore = firebase.firestore();
@@ -232,7 +233,7 @@ function showPasswordPrompt() {
 // Function to check the password
 async function checkPassword() {
   const enteredPassword = document.getElementById("adminPassword").value;
-  const correctPassword = import.meta.env.VITE_ADMIN_PASSWORD; // Assuming you have this in your .env file
+  const correctPassword = 2005
 
   if (enteredPassword === correctPassword) {
     document.getElementById("passwordPrompt").style.display = "none"; // Hide the password prompt
